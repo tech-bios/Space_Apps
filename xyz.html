@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .eclipse-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .sun {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            background-color: #ff9540;
+            position: absolute;
+            box-shadow: 0 0 10px #ff4500,
+                        0 0 40px #ff4500,
+                        0 0 80px #ff4500;
+            z-index: 1;
+        }
+
+        .moon {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc; /* Gray */
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+        }
+        input[type="range"] {
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="eclipse-container">
+        <div class="sun"></div>
+        <div class="moon"></div>
+    </div>
+    <br>
+    <div>
+    
+    <input type="range" id="slider" min="0" max="100" value="50">
+    </div>
+    <script>
+        const moon = document.querySelector('.moon');
+        const slider = document.getElementById('slider');
+
+        slider.addEventListener('input', () => {
+            const sliderValue = slider.value;
+            const moonX = (sliderValue - 50) * 2;
+            moon.style.transform = `translateX(${moonX}px)`;
+        });
+    </script>
+</body>
+</html>
